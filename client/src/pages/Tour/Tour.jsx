@@ -29,6 +29,7 @@ function Tour() {
     const [attractions, setAttractions] = useState([])
     const [includes, setIncludes] = useState([])
     const [description, setDescription] = useState()
+    const [imgPath, setImgPath] = useState()
 
     const { id } = useParams()
     const navigate = useNavigate()
@@ -40,8 +41,8 @@ function Tour() {
         getTourById()
     }, [])
 
-    async function getTourById() {
-        await axios.get(`http://localhost:8080/tour/${id}`).then((res)=>{
+    function getTourById() {
+        axios.get(`http://localhost:8080/tour/${id}`).then((res)=>{
             setTitle(res.data.title)
             setCountry(res.data.country)
             setDurationCount(res.data.durationCount)
@@ -51,6 +52,7 @@ function Tour() {
             setAttractions(res.data.attractions)
             setIncludes(res.data.includes)
             setDescription(res.data.description)
+            setImgPath(res.data.imgPath)
         }).catch((error) => {
             alert("Failed to fetch tour")
             console.log(error)
@@ -105,7 +107,7 @@ function Tour() {
         <div className='container my-5'>
             <div className='row'>
                 <div className='col-xl-8 mb-4'>
-                    <img alt='slide-show' src='/images/slide-show.jpg' className='slide-show'/>
+                    <img alt='slide-show' src={imgPath} className='slide-show'/>
                 </div>
                 <div className='col-xl-4 mb-4 text-start'>
                     <h1>{title}</h1>

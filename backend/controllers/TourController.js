@@ -14,8 +14,8 @@ exports.createTour = async(req,res) => {
             amount,
             rating: 5,
             description,
-            thumbnailImgPath,
-            imgPath,
+            thumbnailImgPath: "images/thumbnail.jpg",
+            imgPath: "images/slide-show.jpg",
             date: new Date(),
         });
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Autocomplete, FormControl, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, TextField } from '@mui/material'
 import { MuiChipsInput } from 'mui-chips-input'
 import './NewTour.css'
+import { useNavigate } from 'react-router-dom';
 
 function NewTour() {
     const [countries, setCountries] = useState()
@@ -14,6 +15,7 @@ function NewTour() {
     const [attractions, setAttractions] = useState([])
     const [includes, setIncludes] = useState([])
     const [description, setDescription] = useState()
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetchCountries()
@@ -48,6 +50,7 @@ function NewTour() {
 
         axios.post(`http://localhost:8080/tour/`, data, config).then((res) => {
             alert("Tour published successfully") 
+            navigate('/tours')
         }).catch((error) => {
             alert("Failed to publish tour")
             console.log(error)
