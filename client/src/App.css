@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+.btn-blue {
+  border-radius: 30px;
+  border: none;
+  background-color: #1E26E3;
+  color: white;
+  padding: 10px 30px;
+}
+
+.btn-blue:hover {
+  border: 3px solid #1E26E3;
+  color: #1E26E3
+}
+
+.btn-red {
+  border-radius: 30px;
+  border: none;
+  background-color: #e3361b;
+  color: white;
+  padding: 10px 30px;
+}
+
+.btn-red:hover {
+  border: 3px solid #e3361b;
+  color: #e3361b;
+}
