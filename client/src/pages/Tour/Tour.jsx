@@ -30,7 +30,6 @@ function Tour() {
     const [includes, setIncludes] = useState([])
     const [description, setDescription] = useState()
     const [image, setImage] = useState()
-    const [thumbnail, setThumbnail] = useState()
 
     const { id } = useParams()
     const navigate = useNavigate()
@@ -44,17 +43,16 @@ function Tour() {
 
     function getTourById() {
         axios.get(`http://localhost:8080/tour/${id}`).then((res)=>{
+            setRating(res.data.rating)
             setTitle(res.data.title)
             setCountry(res.data.country)
             setDurationCount(res.data.durationCount)
-            setRating(res.data.rating)
             setDuration(res.data.duration)
             setAmount(res.data.amount)
             setAttractions(res.data.attractions)
             setIncludes(res.data.includes)
             setDescription(res.data.description)
             setImage(res.data.image)
-            setThumbnail(res.data.thumbnail)
         }).catch((error) => {
             alert("Failed to fetch tour")
             console.log(error)
