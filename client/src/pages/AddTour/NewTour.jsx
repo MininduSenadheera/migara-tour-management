@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Autocomplete, FormControl, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, TextField } from '@mui/material'
+import { Autocomplete, Button, FormControl, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, TextField } from '@mui/material'
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { MuiChipsInput } from 'mui-chips-input'
 import './NewTour.css'
+import FileBase64 from 'react-file-base64';
 import { useNavigate } from 'react-router-dom';
 
 function NewTour() {
@@ -15,6 +17,8 @@ function NewTour() {
     const [attractions, setAttractions] = useState([])
     const [includes, setIncludes] = useState([])
     const [description, setDescription] = useState()
+    const [thumbnail, setThumbnail] = useState()
+    const [image, setImage] = useState()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -40,7 +44,7 @@ function NewTour() {
     function handleSubmit(e) {
         e.preventDefault()
 
-        const data = { title, country, durationCount, duration, amount, attractions, includes, description }
+        const data = { title, country, durationCount, duration, amount, attractions, includes, description, thumbnail, image}
         
         const config = {
             headers: {
@@ -59,7 +63,7 @@ function NewTour() {
     
     return (
         <div className="container" align="center">
-            <form onSubmit={handleSubmit} className="form-card">
+            <form onSubmit={handleSubmit} className="form-card" encType="multipart/form-data">
                 <h3>Create a new tour package</h3>
                 <div className="row mt-5">
                     <div className="col-xl-12">
@@ -125,11 +129,30 @@ function NewTour() {
                     </div>
                     <div className="col-xl-12">
                         <TextField
+                            className="mt-2 mb-4"
                             label="Description"
                             multiline rows={4}
                             fullWidth required
                             onChange={(e) => {setDescription(e.target.value) }}
                         />
+                    </div>
+                    <div className="col-xl-6 mb-4">
+                        <p><b>Upload Thumbnail Image</b><PhotoCamera /></p> 
+                        <FileBase64
+                            type="file"
+                            multiple={false}
+                            onDone={({ base64 }) => setThumbnail(base64)}
+                        />
+                        <p>please upload a square image</p> 
+                    </div>
+                    <div className="col-xl-6 mb-4">
+                        <p><b>Upload Tour Image</b><PhotoCamera /></p> 
+                        <FileBase64
+                            type="file"
+                            multiple={false}
+                            onDone={({ base64 }) => setImage(base64)}
+                        />
+                        <p>please upload a landscape image</p> 
                     </div>
                 </div>
                 <center>

@@ -47,12 +47,12 @@ const TourSchema = new Schema({
         required: false
     },
         
-    thumbnailImgPath: {
+    thumbnail: {
         type: String,
         required: false
     },
 
-    imgPath: {
+    image: {
         type: String,
         required: false
     },

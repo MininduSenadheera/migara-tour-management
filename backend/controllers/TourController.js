@@ -1,7 +1,7 @@
 let Tour = require('../models/Tour');
 
 exports.createTour = async(req,res) => {
-    const { title, country, durationCount, duration, attractions, includes, amount, description, thumbnailImgPath, imgPath } = req.body;
+    const { title, country, durationCount, duration, attractions, includes, amount, description, thumbnail, image } = req.body; 
 
     try {
         await Tour.create({
@@ -14,8 +14,8 @@ exports.createTour = async(req,res) => {
             amount,
             rating: 5,
             description,
-            thumbnailImgPath: "images/thumbnail.jpg",
-            imgPath: "images/slide-show.jpg",
+            thumbnail,
+            image,
             date: new Date(),
         });
 

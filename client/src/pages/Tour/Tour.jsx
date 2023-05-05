@@ -29,7 +29,8 @@ function Tour() {
     const [attractions, setAttractions] = useState([])
     const [includes, setIncludes] = useState([])
     const [description, setDescription] = useState()
-    const [imgPath, setImgPath] = useState()
+    const [image, setImage] = useState()
+    const [thumbnail, setThumbnail] = useState()
 
     const { id } = useParams()
     const navigate = useNavigate()
@@ -52,7 +53,8 @@ function Tour() {
             setAttractions(res.data.attractions)
             setIncludes(res.data.includes)
             setDescription(res.data.description)
-            setImgPath(res.data.imgPath)
+            setImage(res.data.image)
+            setThumbnail(res.data.thumbnail)
         }).catch((error) => {
             alert("Failed to fetch tour")
             console.log(error)
@@ -107,7 +109,12 @@ function Tour() {
         <div className='container my-5'>
             <div className='row'>
                 <div className='col-xl-8 mb-4'>
-                    <img alt='slide-show' src={imgPath} className='slide-show'/>
+                    {image ? (
+                        <img alt='slide-show' src={image} className='slide-show'/>
+                    ) : (
+                        <img alt='slide-show' src='/images/slideShow.jpg' className='slide-show'/>
+                    )}
+                    
                 </div>
                 <div className='col-xl-4 mb-4 text-start'>
                     <h1>{title}</h1>

@@ -7,7 +7,9 @@ const bodyParser = require("body-parser")
 
 app.use(express.static('public'));
 app.use(cors());
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use(express.json({limit: "30mb",extended:true}));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
 const TourRouter = require("./routes/TourRouter");
 
@@ -25,7 +27,7 @@ connection.once("open", function() {
     console.log("db connection success");
 }); 
 
-//when http://localhost:8070/patient ran it will execute patientrouter.js file
+//when http://localhost:8080/tour ran it will execute TourRouter.js file
 app.use("/tour", TourRouter);
 //defining a port to run the application
 //use port 8070 or use any other port if the 8070 is unavailable 

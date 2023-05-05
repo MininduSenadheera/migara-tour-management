@@ -6,7 +6,12 @@ import './TourCard.css'
 function Tour(props) {
     return (
         <div className="tour-card">
-            <img src={props.tour.thumbnailImgPath} alt="tour" />
+            {props.tour.thumbnail ? (
+                <img src={props.tour.thumbnail} alt="tour" />
+            ) : (
+                <img src='images/thumbnail.jpg' alt="tour" />
+            )}
+            
             <h5 className="mt-3">{props.tour.title}</h5> 
             <Rating value={props.tour.rating} readOnly />
             <div className="row">
