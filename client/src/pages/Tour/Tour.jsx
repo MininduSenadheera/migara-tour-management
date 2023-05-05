@@ -112,7 +112,6 @@ function Tour() {
                     ) : (
                         <img alt='slide-show' src='/images/slideShow.jpg' className='slide-show'/>
                     )}
-                    
                 </div>
                 <div className='col-xl-4 mb-4 text-start'>
                     <h1>{title}</h1>
