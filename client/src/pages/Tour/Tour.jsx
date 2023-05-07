@@ -1,7 +1,7 @@
 import { Box, Chip, FormControl, InputAdornment, InputLabel, MenuItem, Modal, OutlinedInput, Rating, Select, Stack, TextField } from '@mui/material'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './Tour.css'
 import { MuiChipsInput } from 'mui-chips-input';
@@ -148,7 +148,7 @@ function Tour() {
                                 <h2>${amount}.00</h2>
                             </div>
                         </div>
-                        <button className="mt-4 btn btn-blue">Book Tour</button> 
+                        <Link to={`/payment/tour/${id}`} className="mt-4 btn btn-blue">Book Tour</Link>
                     </div>
                 </div>
             </div>
